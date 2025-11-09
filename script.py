@@ -2,9 +2,20 @@ import tkinter as tk
 import node as Node
 import bst as BST
 
+# ===========================================================
+# AVL CLASS
+# ===========================================================
+class AVLTree:
+    def get_height(self,root):
+        if not root:
+            return 0
+        return root.height
+    
+        
+
 
 # ===========================================================
-# BST VISUALIZER USING TKINTER
+# AVL VISUALIZER USING TKINTER
 # ===========================================================
 class BSTVisualizer:
     def __init__(self, window):
