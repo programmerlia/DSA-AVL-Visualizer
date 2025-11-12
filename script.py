@@ -1,7 +1,6 @@
 import tkinter as tk
-import node as Node
-import bst as BST
-
+from node import Node
+from bst import AVLTree
 
 # ===========================================================
 # AVL VISUALIZER USING TKINTER
@@ -13,7 +12,7 @@ class BSTVisualizer:
         self.window.geometry("900x600")
         self.window.configure(bg="white")
 
-        self.tree = BST()
+        self.tree = AVLTree()
         self.root = None
 
         # Entry widget for input
