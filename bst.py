@@ -7,10 +7,39 @@ class AVLTree:
     def insert(self, root, key):
         if root is None:
             return Node(key)
+        
+        #inserts 
         if key < root.key:
             root.left = self.insert(root.left, key)
         elif key > root.key:
             root.right = self.insert(root.right, key)
+        else:
+            return root
+
+        root.height = 1 + max(self.get_height(root.left), self.get_height(root.right))
+
+        #Get balance
+        balance = self.get_balance(root)
+
+
+        # LL Case
+        if balance > 1 and key < root.left.key:
+            return self.ll_case(root)  
+
+        # RR Case
+        if balance < -1 and key > root.right.key:
+            return self.rr_case(root) 
+
+        # LR Case
+        if balance > 1 and key > root.left.key:
+            root.left = self.rr_case(root.left) 
+            return self.ll_case(root)  
+
+        # RL Case
+        if balance < -1 and key < root.right.key:
+            root.right = self.ll_case(root.right) 
+            return self.rr_case(root) 
+
         return root
 
     def get_height(self,root):
@@ -32,6 +61,7 @@ class AVLTree:
 
         _2.height = 1+max(self.get_height(_2.left), self.get_height(_2.right))
         _1.height = 1+max(self.get_height(_1.left), self.get_height(_1.right))
+        
         return _2
     
     def rr_case(self, _1):
@@ -43,15 +73,4 @@ class AVLTree:
         _2.height = 1+max(self.get_height(_2.left), self.get_height(_2.right))
         _1.height = 1+max(self.get_height(_1.left), self.get_height(_1.right))
         return _2
-    
-
-    def lr_case(self, _1):
-        _2 = _1.left
-        _3 = _2.right
-
-        _2.right = _3.left #single left
-        _3.left = _2
-        _1.left = _3.right #single right
-        _3.right = _1
-        return _3
     

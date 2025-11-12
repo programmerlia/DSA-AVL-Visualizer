@@ -9,7 +9,7 @@ class BSTVisualizer:
     def __init__(self, window):
         self.window = window
         self.window.title("Binary Search Tree Visualizer")
-        self.window.geometry("900x600")
+        self.window.geometry("1000x600")
         self.window.configure(bg="white")
 
         self.tree = AVLTree()
@@ -25,9 +25,15 @@ class BSTVisualizer:
             font=('Arial', 12), bg="#4CAF50", fg="black"
         )
         self.insert_button.pack(pady=5)
+        #Deletion button
+        self.clear_button = tk.Button(
+            self.window, text="Clear Tree", command=self.clear_tree,
+            font=('Arial', 12), bg="#f44336", fg="white"
+        )
+        self.clear_button.pack(pady=5)
 
         # Canvas for drawing the tree
-        self.canvas = tk.Canvas(self.window, width=880, height=480, bg="white", highlightthickness=1, highlightbackground="gray")
+        self.canvas = tk.Canvas(self.window, width=980, height=500, bg="white", highlightthickness=1, highlightbackground="gray")
         self.canvas.pack(pady=10)
 
         # Label for messages
@@ -58,13 +64,13 @@ class BSTVisualizer:
         if node is not None:
             # Draw left child and connecting line
             if node.left:
-                self.canvas.create_line(x, y, x - x_offset, y + 80, fill="gray", width=2)
-                self.draw_tree(node.left, x - x_offset, y + 80, x_offset / 1.8)
+                self.canvas.create_line(x, y, x - x_offset, y + 60, fill="gray", width=2)
+                self.draw_tree(node.left, x - x_offset, y + 60, x_offset / 2)
 
             # Draw right child and connecting line
             if node.right:
-                self.canvas.create_line(x, y, x + x_offset, y + 80, fill="gray", width=2)
-                self.draw_tree(node.right, x + x_offset, y + 80, x_offset / 1.8)
+                self.canvas.create_line(x, y, x + x_offset, y + 60, fill="gray", width=2)
+                self.draw_tree(node.right, x + x_offset, y + 60, x_offset / 2)
 
             # Draw node (circle)
             self.canvas.create_oval(x - 20, y - 20, x + 20, y + 20, fill="#4CAF50", outline="black", width=2)
@@ -74,9 +80,14 @@ class BSTVisualizer:
     def redraw_tree(self):
         self.canvas.delete("all")
         if self.root:
-            self.draw_tree(self.root, 450, 50, 200)
+            self.draw_tree(self.root, 500, 50, 250)
         else:
             self.status.config(text="Tree is empty.", fg="black")
+
+    def clear_tree(self):
+        self.root = None
+        self.redraw_tree()
+        self.status.config(text="Tree cleared.", fg="blue")
 
 
 # ===========================================================
