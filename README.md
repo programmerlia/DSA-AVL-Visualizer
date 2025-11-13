@@ -15,6 +15,12 @@ This application allows users to insert integer values into a BST and see the st
 - **AVL Balance Factor Analyzation** — Analyze the balance factors to identify which rotations to use.
 - **Dynamic Visualization** — Watch the BST grow as you insert new nodes.  
 
+## Project Documentation
+
+You can view the full project documentation and code explanation here:  
+📄 [Download AVL VISUALIZER FLOWCHART.pdf](./Documentation.pdf)
+📄 [Download AVL VISUALIZER DOCUMENTATION.pdf](./Flowchart.pdf)
+
 ## Installation
 
 1. Clone the repository:
