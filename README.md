@@ -18,8 +18,8 @@ This application allows users to insert integer values into a BST and see the st
 ## Project Documentation
 
 You can view the full project documentation and code explanation here:  
-📄 [Download AVL VISUALIZER FLOWCHART.pdf](./Documentation.pdf)
-📄 [Download AVL VISUALIZER DOCUMENTATION.pdf](./Flowchart.pdf)
+📄 [Download AVL VISUALIZER DOCUMENTATION.pdf](./Documentation.pdf)
+📄 [Download AVL VISUALIZER FLOWCHART.pdf](./Flowchart.pdf)
 
 ## Installation
 
